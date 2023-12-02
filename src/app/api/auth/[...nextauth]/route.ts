@@ -11,21 +11,14 @@ const nextAuthOptions: NextAuthOptions = {
 			},
 
 			async authorize(credentials, req) {
-				const response = await fetch('http://localhost:3002/login', {
-					method: 'POST',
-					headers: {
-						'Content-type': 'application/json'
-					},
-					body: JSON.stringify({
-						email: credentials?.email,
-						password: credentials?.password
-					})
-				})
-
-				const user = await response.json()
-
-				if (user && response.ok) {
-					return user
+				if (credentials?.email === '1' && credentials?.password === '1') {
+					return {
+						id: '1',
+						user: {
+							email: '1',
+							name: 'Everton'
+						}
+					}
 				}
 
 				return null
@@ -33,7 +26,7 @@ const nextAuthOptions: NextAuthOptions = {
 		})
 	],
 	pages: {
-		signIn: '/'
+		signIn: '/login'
 	},
 	callbacks: {
 		async jwt({ token, user }) {
