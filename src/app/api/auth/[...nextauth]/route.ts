@@ -26,7 +26,7 @@ const nextAuthOptions: NextAuthOptions = {
 		})
 	],
 	pages: {
-		signIn: '/login'
+		signIn: '/'
 	},
 	callbacks: {
 		async jwt({ token, user }) {
